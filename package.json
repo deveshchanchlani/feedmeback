@@ -1,0 +1,25 @@
+{
+  "name": "feedmeback",
+  "version": "0.0.1",
+  "description": "Feedback Collecting app by SolutionsIQ",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/deveshchanchlani/feedmeback.git"
+  },
+  "author": "Devesh Chanchlani",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/deveshchanchlani/feedmeback/issues"
+  },
+  "homepage": "https://github.com/deveshchanchlani/feedmeback",
+  "engines": {
+    "node": "v0.10.22"
+  },
+  "dependencies": {
+    "connect": "~2.11.2"
+  }
+}
