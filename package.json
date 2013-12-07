@@ -1,10 +1,10 @@
 {
   "name": "feedmeback",
-  "version": "0.0.1",
   "description": "Feedback Collecting app by SolutionsIQ",
-  "main": "server.js",
+  "version": "0.0.1",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",
@@ -20,6 +20,7 @@
     "node": "v0.10.22"
   },
   "dependencies": {
-    "connect": "~2.11.2"
+    "express": "3.4.6",
+    "jade": "~0.35.0"
   }
 }
