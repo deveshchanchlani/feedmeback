@@ -1,0 +1,15 @@
+extends layout
+  
+block content
+  
+  form#formQuestion(name="questionForm",method="post",action="/postAnswer")
+    h6 Question #{index+1}.
+    p #{question.query}
+    label(class="ratingInfoLbl") #{question.info}
+    br
+    select#answer(placeholder="answer", name="answer", required)
+      each option in question.options
+        option(value="#{option}") #{option}
+    input#qNo(type="hidden", placeholder="qNo", value="#{index+1}", name="qNo")
+    br
+    input(type="submit", value="Submit")

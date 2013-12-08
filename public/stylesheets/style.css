@@ -11,3 +11,15 @@ p {
 	font-size: 0.5em;
   margin-top: -30px;
 }
+
+.chkBoxLbl {
+  font-size: 0.5em;
+  top: -2px;
+  position: relative;
+  padding-left: 10px;
+}
+
+.ratingInfoLbl {
+	font-size: 0.4em;
+  color: blue;
+}

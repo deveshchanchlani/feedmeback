@@ -13,6 +13,7 @@ exports.getFeedBack = function(req, res) {
 	  var viewToRender = 'feedmeback-' + question.type.id;
 	  res.render(viewToRender, { question: question, index: questionIndex });
   } else {
+	  colsole.log("Thank You !!");
 	  res.render("thankyou", {});
   }
 };
@@ -24,9 +25,9 @@ exports.postAnswer = function() {
 		console.log("Feedback Given = " + req.body.answer);
 		
 		questionIndex++;
-		// If it worked, set the header so the address bar doesn't still say /adduser
+		//set the header so the address bar doesn't still say /adduser
         res.location("feedmeback");
-        // And forward to success page
+        //And forward to success page
         res.redirect("feedmeback");
 	};
 };

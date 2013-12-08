@@ -1,0 +1,13 @@
+extends layout
+  
+block content
+  
+  form#formQuestion(name="questionForm",method="post",action="/postAnswer")
+    h6 Question #{index+1}.
+    p #{question.query}
+    each option, i in question.options
+      input#answer(type="checkbox", placeholder="answer", name="answer", value="#{option}", id="#{option}")
+      label(class="chkBoxLbl", for="#{option}") #{option}
+      br
+    input#qNo(type="hidden", placeholder="qNo", value="#{index+1}", name="qNo")
+    input(type="submit", value="Submit")

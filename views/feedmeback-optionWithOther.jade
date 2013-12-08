@@ -1,0 +1,17 @@
+extends layout
+  
+block content
+  
+  form#formQuestion(name="questionForm",method="post",action="/postAnswer")
+    h6 Question #{index+1}.
+    p #{question.query}
+    each option, i in question.options
+      input#answer(type="radio", placeholder="answer", name="answer", value="#{option}", id="#{option}")
+      label(class="chkBoxLbl" for="#{option}") #{option}
+      br
+    input#answer(type="radio", placeholder="answer", name="answer", value="other", id="other")
+    label(class="chkBoxLbl", for="other") Other
+    input#Other(type="text", placeholder="Other", name="answer_other", size="70", style="margin-left: 10px;")
+    input#qNo(type="hidden", placeholder="qNo", value="#{index+1}", name="qNo")
+    br
+    input(type="submit", value="Submit")
