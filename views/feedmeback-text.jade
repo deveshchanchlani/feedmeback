@@ -1,0 +1,10 @@
+extends layout
+  
+block content
+  
+  form
+    h6 Question #{index+1}.
+    p #{question.query}
+    input(type="text", name="textAnswer", size="70", required)
+    br
+    input(type="submit", value="Submit")
