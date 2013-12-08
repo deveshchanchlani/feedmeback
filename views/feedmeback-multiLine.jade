@@ -5,7 +5,7 @@ block content
   form#formQuestion(name="questionForm",method="post",action="/postAnswer")
     h6 Question #{index+1}.
     p #{question.query}
-    input#answer(type="text", placeholder="answer", name="answer", size="70", required)
+    textarea#answer(placeholder="answer", name="answer", rows=4, cols="70", required)
     input#qNo(type="hidden", placeholder="qNo", value="#{index+1}", name="qNo")
     br
     input(type="submit", value="Submit")
