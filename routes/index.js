@@ -13,7 +13,7 @@ exports.getFeedBack = function(req, res) {
 	  var viewToRender = 'feedmeback-' + question.type.id;
 	  res.render(viewToRender, { question: question, index: questionIndex });
   } else {
-	  colsole.log("Thank You !!");
+	  console.log("Thank You !!");
 	  res.render("thankyou", {});
   }
 };
