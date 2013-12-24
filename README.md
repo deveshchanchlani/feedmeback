@@ -7,13 +7,13 @@ Using the App
 --------------
 
 Supports following types of questions:
-. Multiple Choice
-. Multiple Choice with Other option
-. Single Choice, multiple options
-. Single Choice, multiple options with other option
-. Multi line text
-. Simple text
-. Rating
+* Multiple Choice
+* Multiple Choice with Other option
+* Single Choice, multiple options
+* Single Choice, multiple options with other option
+* Multi line text
+* Simple text
+* Rating
 
 Preparing Questionnaire
 -----------------------
