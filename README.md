@@ -16,15 +16,14 @@ Supports following types of questions:
 * Simple text
 * Rating
 
-Preparing Questionnaire
------------------------
-Questionnaire is detailed as JSON in the file /libs/survey.js
+**Preparing Questionnaire**
+
+Questionnaire is detailed as a JSON in the file /libs/survey.js
 
 Installing the App
-==================
+------------------
 
-Pre-requisites:
----------------
+**Pre-requisites:**
 install node.js >= v0.10.22
 
 After checking out the code, fire the following commands from the app directory:
