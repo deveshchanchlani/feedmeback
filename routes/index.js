@@ -1,7 +1,9 @@
 var survey = require('../libs/survey');
+var questionBroadcast = require('../libs/questionBroadcast');
 
 exports.index = function(req, res){
-  res.render('index', { title: 'Express' });
+  res.render('index', {});
+  questionBroadcast.begin();
 };
 
 var questionIndex = 0;

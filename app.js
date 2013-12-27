@@ -1,12 +1,10 @@
-
-/**
- * Module dependencies.
- */
-
 var express = require('express');
 var routes = require('./routes');
 var http = require('http');
 var path = require('path');
+var io = require('socket.io');
+
+var questionBroadcast = require('./libs/questionBroadcast');
 
 var app = express();
 
@@ -34,6 +32,12 @@ app.get('/feedmeback', routes.getFeedBack);
 
 app.post('/postAnswer', routes.postAnswer());
 
-http.createServer(app).listen(app.get('port'), function(){
+var server = http.createServer(app);
+
+var serverListener = server.listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
+
+//var socketListener = io.listen(server);
+var socketListener = io.listen(serverListener);
+questionBroadcast.init(socketListener);
