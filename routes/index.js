@@ -2,7 +2,7 @@ var survey = require('../libs/survey');
 var questionBroadcast = require('../libs/questionBroadcast');
 
 exports.index = function(req, res){
-  res.render('index', {});
+  res.render('index', {wait: false});
   questionBroadcast.begin();
 };
 
@@ -27,9 +27,8 @@ exports.postAnswer = function() {
 		console.log("Feedback Given = " + req.body.answer);
 		
 		questionIndex++;
-		//set the header so the address bar doesn't still say /adduser
-        res.location("feedmeback");
+		
         //And forward to success page
-        res.redirect("feedmeback");
+		res.render('index', { wait: true });
 	};
 };

@@ -5,7 +5,7 @@ var socket = io.connect('http://localhost:3000');
 socket.on('question', function(data) {
 	// document.getElementById('formQuestion').innerHTML = data.query;
 
-	var formQuestion = document.getElementById('formQuestion');
+	var formQuestion = document.getElementById('qCtr');
 	React.renderComponent(window[data.type.tag]({
 		query : data.query,
 		index : data.index,

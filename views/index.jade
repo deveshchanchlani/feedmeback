@@ -5,7 +5,9 @@ block content
     script(src='/js/JSXTransformer.js')
     script(src='/socket.io/socket.io.js')
     script(src='/js/questionComponents.js', type="text/jsx")
-    script(src='/js/content.js')
+    script(src='/js/notifier.js')
     
     div(id="container")
       form#formQuestion(name="questionForm",method="post",action="/postAnswer")
+        h6(id='waitText' style="visibility: #{wait ? 'visible' : 'hidden'};") Thanks. Please wait for the next question to pop up.
+        div#qCtr(style="visibility: #{wait ? 'hidden' : 'visible'};")
