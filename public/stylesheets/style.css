@@ -27,3 +27,14 @@ p {
 	font-size: 0.4em;
   color: blue;
 }
+
+.question {
+  margin-top: 10px;
+  color: green;
+  font-weight: bold;
+}
+
+.response {
+  margin-top: 10px;
+  color: blue;
+}

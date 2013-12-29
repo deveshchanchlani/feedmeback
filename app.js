@@ -4,7 +4,7 @@ var http = require('http');
 var path = require('path');
 var io = require('socket.io');
 
-var questionBroadcast = require('./libs/questionBroadcast');
+var broadcast = require('./libs/broadcast');
 
 var app = express();
 
@@ -29,6 +29,7 @@ if ('development' == app.get('env')) {
 
 app.get('/', routes.index);
 app.get('/feedmeback', routes.getFeedBack);
+app.get('/feedbacks', routes.showFeedBacks);
 
 app.post('/postAnswer', routes.postAnswer());
 
@@ -40,4 +41,4 @@ var serverListener = server.listen(app.get('port'), function(){
 
 //var socketListener = io.listen(server);
 var socketListener = io.listen(serverListener);
-questionBroadcast.init(socketListener);
+broadcast.init(socketListener);

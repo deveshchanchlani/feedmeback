@@ -1,12 +1,13 @@
 var survey = require('../libs/survey');
-var questionBroadcast = require('../libs/questionBroadcast');
+var broadcast = require('../libs/broadcast');
 
 exports.index = function(req, res){
-  res.render('index', {wait: false});
-  questionBroadcast.begin();
+  res.render('index', { wait: false });
+  broadcast.beginQuestionnaire();
 };
 
 var questionIndex = 0;
+var responses = {};
 
 exports.getFeedBack = function(req, res) {
   console.log("index=" + questionIndex);
@@ -20,13 +21,24 @@ exports.getFeedBack = function(req, res) {
   }
 };
 
+exports.showFeedBacks = function(req, res) {
+	res.render('feedbacks', {});
+};
+
 exports.postAnswer = function() {
 	return function(req, res) {
-		//TODO: record answer
-		console.log("Question Answered = " + req.body.qNo);
+		console.log("Question Index Answered = " + req.body.qNo);
 		console.log("Feedback Given = " + req.body.answer);
 		
-		questionIndex++;
+		var qNo = req.body.qNo;
+		var response = req.body.answer;
+		
+		if(!responses[qNo]) {
+			responses[qNo] = [];
+		}
+		responses[qNo].push(response);
+		
+		broadcast.updateFeedback(qNo, response);
 		
         //And forward to success page
 		res.render('index', { wait: true });
