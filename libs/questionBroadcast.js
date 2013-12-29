@@ -7,9 +7,10 @@ exports.init = function(socket) {
 };
 
 exports.begin = function() {
-//	this.socket.volatile.emit('question', survey.questions[index]);
+	var currentQuestion = survey.questions[index];
+	currentQuestion.index = index+1;
 	
 	this.socket.sockets.on('connection', function (soc) {
-		soc.emit('question', survey.questions[index]);
+		soc.emit('question', currentQuestion);
 	});
 };

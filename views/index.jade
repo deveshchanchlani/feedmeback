@@ -1,7 +1,10 @@
 extends layout
 
 block content
-    script(src='/js/content.js')
+    script(src='/js/react.js')
+    script(src='/js/JSXTransformer.js')
+    script(src='/js/content.js', type="text/jsx")
     script(src='/socket.io/socket.io.js')
     
     div(id="container")
+      form#formQuestion(name="questionForm",method="post",action="/postAnswer")

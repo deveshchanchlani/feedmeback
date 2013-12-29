@@ -1,34 +1,32 @@
-var questionType = require('./questionType');
-
-var questionTypeEnum = questionType.questionTypeEnum;
+var questionTypeFactory = require('./questionTypeFactory');
 
 exports.questions = 
 [
  	{
  		query: "One word for the trainer",
- 		type: questionTypeEnum.text
+ 		type: questionTypeFactory.text
  	}, {
  		query: "Few Paras for the trainer",
- 		type: questionTypeEnum.multiLine
+ 		type: questionTypeFactory.multiLine
  	}, {
  		query: "You have multiple choices",
- 		type: questionTypeEnum.multi,
+ 		type: questionTypeFactory.multi,
  		options: ['excellent', 'very good', 'good', 'poor']
  	}, {
  		query: "You have multiple choices with Other option",
- 		type: questionTypeEnum.multiWithOther,
+ 		type: questionTypeFactory.multiWithOther,
  		options: ['excellent', 'very good', 'good', 'poor']
  	}, {
  		query: "You have one of multiple choices",
- 		type: questionTypeEnum.option,
+ 		type: questionTypeFactory.option,
  		options: ['excellent', 'very good', 'good', 'poor']
  	}, {
  		query: "You have one of multiple choices",
- 		type: questionTypeEnum.optionWithOther,
+ 		type: questionTypeFactory.optionWithOther,
  		options: ['excellent', 'very good', 'good', 'poor']
  	}, {
  		query: "Rate the Session",
- 		type: questionTypeEnum.rating,
+ 		type: questionTypeFactory.rating,
  		options: ['5', '4', '3', '2', '1'],
  		info: "5 being highest, and 1 being lowest."
  	}
