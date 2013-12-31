@@ -2,7 +2,7 @@ var express = require('express');
 var routes = require('./routes');
 var http = require('http');
 var path = require('path');
-var io = require('socket.io');
+var socketio = require('socket.io');
 
 var broadcast = require('./libs/broadcast');
 
@@ -35,10 +35,11 @@ app.post('/postAnswer', routes.postAnswer());
 
 var server = http.createServer(app);
 
-var serverListener = server.listen(app.get('port'), function(){
+var port = app.get('port');
+var serverListener = server.listen(port, function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
 
-//var socketListener = io.listen(server);
-var socketListener = io.listen(serverListener);
-broadcast.init(socketListener);
+//var io = socketio.listen(port);
+var io = socketio.listen(serverListener);
+broadcast.init(io);

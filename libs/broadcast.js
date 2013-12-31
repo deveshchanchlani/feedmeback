@@ -2,20 +2,22 @@ var survey = require('./survey');
 
 var index = 0;
 
-exports.init = function(socket) {
-	this.socket = socket;
+exports.init = function(io) {
+	this.io = io;
 };
 
 exports.beginQuestionnaire = function() {
 	var currentQuestion = survey.questions[index];
 	currentQuestion.index = index+1;
 	
-//	this.socket.sockets.on('connection', function (soc) {
+//	this.io.sockets.on('connection', function (soc) {
 //		soc.emit('question', currentQuestion);
 //	});
 	
-	this.socket.of('/q').on('connection', function (soc) {
-		soc.emit('question', currentQuestion);
+	this.io.of('/q').on('connection', function (soc) {
+//		soc.on('connect', function(currentQuestion){
+			soc.emit('question', currentQuestion);
+//		});
 	});
 };
 
@@ -30,11 +32,13 @@ exports.updateFeedback = function(qNo, response) {
 	
 	currentFeedback.response = response;
 	
-//	this.socket.sockets.on('connection', function (soc) {
+//	this.io.sockets.on('connection', function (soc) {
 //		soc.emit('feedbacks', currentFeedback);
 //	});
 	
-	this.socket.of('/f').on('connection', function (soc) {
-		soc.emit('feedbacks', currentFeedback);
+	this.io.of('/f').on('connection', function (soc) {
+//		soc.on('connect', function(currentFeedback){
+			soc.emit('feedbacks', currentFeedback);
+//		});
 	});
 };
