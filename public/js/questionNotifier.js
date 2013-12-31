@@ -1,5 +1,5 @@
 // creating a new websocket
-var socket = io.connect('http://localhost:3000/q');
+var socket = io.connect('http://localhost:3000');
 
 socket.on('connect', function () {
 	socket.on('question', function(data) {

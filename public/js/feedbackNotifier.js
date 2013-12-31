@@ -1,8 +1,9 @@
 // creating a new websocket
-var socket1 = io.connect('http://localhost:3000/f');
+var socket = io.connect('http://localhost:3000');
 
-socket1.on('connect', function () {
-	socket1.on('feedbacks', function(data) {
+socket.on('connect', function () {
+
+	socket.on('feedbacks', function(data) {
 	
 		if (data.question) {
 			var quesDiv = document.getElementById('quesDiv');
