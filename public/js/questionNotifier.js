@@ -9,6 +9,7 @@ socket.on('connect', function () {
 		React.renderComponent(window[data.type.tag]({
 			query : data.query,
 			index : data.index,
+			uid: data.uid,
 			options : data.options,
 			info : data.info
 		}), formQuestion);

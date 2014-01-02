@@ -27,18 +27,24 @@ exports.showFeedBacks = function(req, res) {
 
 exports.postAnswer = function() {
 	return function(req, res) {
-		console.log("Question Index Answered = " + req.body.qNo);
+		var moreInfo = req.body.hidInfo.split('|');
+		var qNo = moreInfo[0];
+		var uid = moreInfo[1];
+		
+		console.log("Question Index Answered = " + qNo);
+		console.log("Session Uid = " + uid);
 		console.log("Feedback Given = " + req.body.answer);
 		
-		var qNo = req.body.qNo;
 		var response = req.body.answer;
 		
 		if(!responses[qNo]) {
-			responses[qNo] = [];
+			responses[qNo] = {};
 		}
-		responses[qNo].push(response);
-		
-		broadcast.updateFeedback(qNo, response);
+		if(!responses[qNo][uid]) {
+			responses[qNo][uid] = response;
+			
+			broadcast.updateFeedback(qNo, response);
+		}
 		
         //And forward to success page
 		res.render('index', { wait: true });

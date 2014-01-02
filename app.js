@@ -1,9 +1,9 @@
 var express = require('express');
-var routes = require('./routes');
 var http = require('http');
 var path = require('path');
 var socketio = require('socket.io');
 
+var routes = require('./routes');
 var broadcast = require('./libs/broadcast');
 
 var app = express();
@@ -12,13 +12,19 @@ var app = express();
 app.set('port', process.env.PORT || 3000);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
+
 app.use(express.favicon());
 app.use(express.logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded());
+
+app.use(express.bodyParser());
+
 app.use(express.methodOverride());
-app.use(express.cookieParser('your secret here'));
-app.use(express.session());
+
+app.use(express.cookieParser());
+app.use(express.session({secret: 'Feed Me Back', key: 'express.sid'}));
+
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -36,10 +42,9 @@ app.post('/postAnswer', routes.postAnswer());
 var server = http.createServer(app);
 
 var port = app.get('port');
-var serverListener = server.listen(port, function(){
+server.listen(port, function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
 
-//var io = socketio.listen(port);
-var io = socketio.listen(serverListener);
+var io = socketio.listen(server);
 broadcast.init(io);
