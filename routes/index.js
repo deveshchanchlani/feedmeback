@@ -43,7 +43,7 @@ exports.postAnswer = function() {
 		if(!responses[qNo][uid]) {
 			responses[qNo][uid] = response;
 			
-			broadcast.updateFeedback(qNo, response);
+			broadcast.updateFeedback(qNo, uid, response);
 		}
 		
         //And forward to success page

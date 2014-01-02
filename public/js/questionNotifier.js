@@ -1,4 +1,3 @@
-// creating a new websocket
 var socket = io.connect(serverConfig.socketioServerUrl);
 
 socket.on('connect', function () {

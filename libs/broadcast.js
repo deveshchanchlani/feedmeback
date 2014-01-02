@@ -46,15 +46,16 @@ exports.beginQuestionnaire = function() {
 };
 
 var currentQNo = 0;
-exports.updateFeedback = function(qNo, response) {
-	var currentFeedback = {};
+exports.updateFeedback = function(qNo, clientId, response) {
+	var currentFeedback = {
+		response: response,
+		responseId: qNo + '|' + clientId
+	};
 
 	if (currentQNo !== qNo) {
 		currentFeedback.question = survey.questions[qNo - 1].query;
 		currentQNo = qNo;
 	}
-
-	currentFeedback.response = response;
 
 	var sockets = this.io.sockets;
 
