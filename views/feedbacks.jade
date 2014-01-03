@@ -10,3 +10,6 @@ block content
     div(id="container")
       div(id="quesDiv" class="question")
       div(id="feedDiv" class="response")
+      form#nextQuestion(name="nextQuestionForm", method="get", action="/nextQuestion")
+        div(style="top: -110px; position: relative; left: 300px;")
+          input(type="submit" value="Next Question")

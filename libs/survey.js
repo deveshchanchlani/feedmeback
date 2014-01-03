@@ -6,6 +6,9 @@ exports.questions =
  		query: "One word for the trainer",
  		type: questionTypeFactory.text
  	}, {
+ 		query: "Two words for the trainer",
+ 		type: questionTypeFactory.text
+ 	}, {
  		query: "Few Paras for the trainer",
  		type: questionTypeFactory.multiLine
  	}, {

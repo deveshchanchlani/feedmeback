@@ -34,8 +34,8 @@ if ('development' == app.get('env')) {
 }
 
 app.get('/', routes.index);
-app.get('/feedmeback', routes.getFeedBack);
 app.get('/feedbacks', routes.showFeedBacks);
+app.get('/nextQuestion', routes.nextQuestion);
 
 app.post('/postAnswer', routes.postAnswer());
 

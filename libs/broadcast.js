@@ -29,11 +29,11 @@ exports.init = function(io) {
 	});
 };
 
-exports.beginQuestionnaire = function() {
+var broadCastQuestion = function(sockets) {
 	var currentQuestion = survey.questions[index];
 	currentQuestion.index = index + 1;
 
-	var sockets = this.io.sockets;
+//	var sockets = this.io.sockets;
 
 	sockets.on('connection', function(socket) {
 
@@ -45,16 +45,26 @@ exports.beginQuestionnaire = function() {
 	});
 };
 
-var currentQNo = 0;
+exports.beginQuestionnaire = function() {
+	broadCastQuestion(this.io.sockets);
+};
+
+exports.nextQuestion = function() {
+	index++;
+	broadCastQuestion(this.io.sockets);
+};
+
+var questionTitleDisplayed = [];
+
 exports.updateFeedback = function(qNo, clientId, response) {
 	var currentFeedback = {
 		response: response,
 		responseId: qNo + '|' + clientId
 	};
-
-	if (currentQNo !== qNo) {
+	
+	if(questionTitleDisplayed.indexOf(qNo) === -1) {
 		currentFeedback.question = survey.questions[qNo - 1].query;
-		currentQNo = qNo;
+		questionTitleDisplayed.push(qNo);
 	}
 
 	var sockets = this.io.sockets;

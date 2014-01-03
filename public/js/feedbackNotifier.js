@@ -10,6 +10,7 @@ socket.on('connect', function() {
 			if (data.question) {
 				var quesDiv = document.getElementById('quesDiv');
 				quesDiv.innerHTML = data.question;
+				feedDiv.innerHTML = "";
 			}
 
 			var feedDiv = document.getElementById('feedDiv');
