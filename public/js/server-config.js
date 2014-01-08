@@ -1,3 +1,3 @@
 var serverConfig = {
-	socketioServerUrl: 'http://192.168.2.5:3000'
+	socketioServerUrl: 'http://localhost:3000'
 };
