@@ -2,6 +2,7 @@ extends layout
 
 block content
     script(src='/js/react.js' type="text/javascript")
+    script(src='/js/jquery-1.10.2.min.js' type="text/javascript")
     script(src='/js/JSXTransformer.js' type="text/javascript")
     script(src='/socket.io/socket.io.js' type="text/javascript")
     script(src='/js/server-config.js' type="text/javascript")
@@ -11,6 +12,6 @@ block content
     h1 Feed Me Back !!
     
     div(id="container")
-      form#formQuestion(name="questionForm",method="post",action="/postAnswer")
+      form#formQuestion(method="get" action="/")
         h6(id='waitText' style="visibility: #{wait ? 'visible' : 'hidden'};") Thanks. Please wait for the next question to pop up.
         div#qCtr(style="visibility: #{wait ? 'hidden' : 'visible'};")

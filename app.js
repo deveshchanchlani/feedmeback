@@ -37,8 +37,6 @@ app.get('/', routes.index);
 app.get('/feedbacks', routes.showFeedBacks);
 app.get('/nextQuestion', routes.nextQuestion);
 
-app.post('/postAnswer', routes.postAnswer());
-
 var server = http.createServer(app);
 
 var port = app.get('port');
